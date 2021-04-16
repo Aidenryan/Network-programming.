@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     //创建socket
     int sockfd = socket(PF_INET, SOCK_STREAM, 0);
     assert(sockfd >= 0);
-
+    //连接
     if(connect(sockfd, (sockaddr*)&server_address, sizeof(server_address)) < 0)
     {
         cout<<"Connection failed"<<endl;
