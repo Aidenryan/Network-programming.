@@ -10,7 +10,7 @@
 
 using namespace std;
 
-#define buf_size 1024
+#define buf_size 1024//设置缓冲区大小
 
 int main(int argc, char* argv[])
 {
