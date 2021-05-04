@@ -75,7 +75,7 @@ private:
     bool process_write(HTTP_CODE ret);
 
     //下面是被process_read调用来分析http请求
-    HTTP_CODE parse_requset_line(char* text);
+    HTTP_CODE parse_request_line(char* text);
     HTTP_CODE parse_headers(char* text);
     HTTP_CODE parse_content( char* text );
     HTTP_CODE do_request();

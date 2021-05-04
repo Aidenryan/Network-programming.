@@ -58,13 +58,13 @@ threadpool<T>::threadpool(int thread_number, int max_requests):
     {
         printf("Create the %dth thred\n", i);
 
-        if(pthread_create(m_threads + i, NULL, workr, this) != 0)
+        if(pthread_create(m_threads + i, NULL, worker, this) != 0)
         {
             delete [] m_threads;
             throw std::exception();
         }
 
-        if(pthread_detach(m_thread[i]))
+        if(pthread_detach(m_threads[i]))
         {
             delete [] m_threads;
             throw std::exception();
