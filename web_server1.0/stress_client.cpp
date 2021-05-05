@@ -1,4 +1,4 @@
-//测试服务器的客户端小程序
+//测试服务器的客户端程序
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -103,9 +103,9 @@ void start_conn(int epoll_fd, int num, const char* ip, int port)
 
     for(int i(0); i < num; ++i)
     {
-        sleep(1);
+        //sleep(1);
         int sockfd = socket(PF_INET, SOCK_STREAM, 0);
-        printf( "create 1 sock\n" );
+        printf( "Create 1 sock.   " );
 
         if(sockfd < 0)
         {
@@ -113,7 +113,7 @@ void start_conn(int epoll_fd, int num, const char* ip, int port)
         }
         if(connect(sockfd, (sockaddr*)&address, sizeof(address)) == 0)
         {
-            printf( "build connection %d\n", i );
+            printf( "Build connection %d\n", i );
             addfd( epoll_fd, sockfd );
         }  
     }

@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
 
     int listenfd = socket(PF_INET, SOCK_STREAM, 0);
     assert(listenfd >= 0);
-    struct linger tmp = {1, 0};
+    struct linger tmp = {1, 0};//设置socket关闭处理
     setsockopt(listenfd, SOL_SOCKET, SO_LINGER, &tmp, sizeof(tmp));
 
     int ret = 0;
@@ -136,7 +136,7 @@ int main(int argc, char* argv[])
                 //如果有异常，直接关闭客户端连接
                 users[sockfd].close_conn();
             }
-            else if(events[i].events & EPOLLIN)
+            else if(events[i].events & EPOLLIN)//数据可读
             {
                 if(users[sockfd].read())
                 {
@@ -146,7 +146,6 @@ int main(int argc, char* argv[])
                 {
                     users[sockfd].close_conn();
                 }
-                
             }
             else if(events[i].events & EPOLLOUT)
             {

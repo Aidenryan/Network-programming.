@@ -24,7 +24,7 @@ private:
     int m_max_requests; //请求队列中允许的最大请求数
     pthread_t* m_threads; //描述线程池的数组，大小为m_thread_number
     std::list<T*> m_workQueue; //请求队列
-    locker m_queueLocker; //保护请求队列的互斥所
+    locker m_queueLocker; //保护请求队列的互斥锁住
     sem m_queueStat; // 是否有任务需要处理
     bool m_stop; //是否结束线程
 
@@ -36,8 +36,7 @@ public:
     bool append(T* request);
 };
 
-template<typename T>
-//创建线程池类的时候就开始创建线程
+template<typename T>//创建线程池类的时候就开始创建线程
 threadpool<T>::threadpool(int thread_number, int max_requests):
         m_thread_number(thread_number), m_max_requests(max_requests), m_stop(false), m_threads(NULL)
 {
